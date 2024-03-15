@@ -1,6 +1,7 @@
 package com.educandoweb.course.entities;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
