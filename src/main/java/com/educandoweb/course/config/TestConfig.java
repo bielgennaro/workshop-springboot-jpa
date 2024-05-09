@@ -1,5 +1,7 @@
 package com.educandoweb.course.config;
 
+import com.educandoweb.course.entities.Category;
+import com.educandoweb.course.repositories.CategoryRepository;
 import com.educandoweb.course.entities.enums.OrderStatus;
 import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.User;
@@ -22,6 +24,9 @@ public class TestConfig implements CommandLineRunner {
     
     @Autowired
     private OrderRepository orderRepository;
+    
+    @Autowired
+    private CategoryRepository categoryRepository;
 
 
     @Override
@@ -34,8 +39,13 @@ public class TestConfig implements CommandLineRunner {
         Order o1 = new Order(null, Instant.parse("2024-06-12T19:53:07Z"), OrderStatus.DELIVERED, u1);
         Order o2 = new Order(null, Instant.parse("2024-02-20T11:32:02Z"), OrderStatus.PAID, u2);
         Order o3 = new Order(null, Instant.parse("2024-08-22T09:23:02Z"), OrderStatus.SHIPPED, u3);
+
+        Category c1 = new Category(null, "Scholar");
+        Category c2 = new Category(null, "Eletronics");
+        Category c3 = new Category(null, "Computers");
         
         userRepository.saveAll(Arrays.asList(u1, u2, u3));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+        categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
     }
 }
