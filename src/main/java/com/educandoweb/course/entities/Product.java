@@ -1,5 +1,7 @@
 package com.educandoweb.course.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,9 +16,8 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "tb_category")
-public class Category implements Serializable {
-
+@Table(name = "tb_product")
+public class Product implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -24,18 +25,22 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    
-    @Transient
-    private Set<Product> products = new HashSet<>();
+    private String description;
+    private Double price;
+    private String imgUrl;
 
-    public Category() {
+    @Transient
+    private Set<Category> categories = new HashSet<>();
+    
+    public Product() {
+        
     }
 
-    public Category(Long id, String name) {
-        super();
+    public Product(Long id, String name, String description, Double price, String imgUrl) {
         this.id = id;
         this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
     }
-
-
 }

@@ -1,11 +1,13 @@
 package com.educandoweb.course.config;
 
 import com.educandoweb.course.entities.Category;
+import com.educandoweb.course.entities.Product;
 import com.educandoweb.course.repositories.CategoryRepository;
 import com.educandoweb.course.entities.enums.OrderStatus;
 import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.repositories.OrderRepository;
+import com.educandoweb.course.repositories.ProductRepository;
 import com.educandoweb.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +29,9 @@ public class TestConfig implements CommandLineRunner {
     
     @Autowired
     private CategoryRepository categoryRepository;
+    
+    @Autowired
+    private ProductRepository productRepository;
 
 
     @Override
@@ -44,8 +49,13 @@ public class TestConfig implements CommandLineRunner {
         Category c2 = new Category(null, "Eletronics");
         Category c3 = new Category(null, "Computers");
         
+        Product p1 = new Product(null, "The lord of the rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+        Product p2 = new Product(null, "Smart TV", "Lorem ipsum dolor sit amet, consectetur.", 2190.0, "");
+        Product p3 = new Product(null, "Macbook Pro", "Lorem ipsum dolor sit amet, consectetur.", 3400.0, "");
+        
         userRepository.saveAll(Arrays.asList(u1, u2, u3));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
         categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
+        productRepository.saveAll(Arrays.asList(p1, p2, p3));
     }
 }
